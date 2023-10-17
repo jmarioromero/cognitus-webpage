@@ -1,0 +1,37 @@
+:root {
+    --cardWidth: 236px;
+    --cardHeight: 280px;
+    --cardMargin: 16px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    width: 100%;
+}
+
+.item-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background: #bbb;
+}
+.card {
+    width: var(--cardWidth);
+    height: var(--cardHeight);
+    margin: var(--cardMargin);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.item-list .card picture img {
+    width: 150px;
+}
+
+#basic-card {
+    display: none;
+}

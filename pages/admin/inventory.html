@@ -5,10 +5,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inventory</title>
+  <link rel="stylesheet" href="../../assets/css/admin/inventory.css">
 </head>
 
 <body>
   <h1>Inventory</h1>
+
+  <form id="item-form">
+    <input type="text" id="item-name" placeholder="Name" /><br/>
+    <input type="text" id="item-sku" placeholder="SKU" /><br/>
+    <input type="text" id="item-price" placeholder="Price" /><br/>
+    <input type="text" id="item-stock" placeholder="Quantity" /><br/>
+    <textarea id="item-description" placeholder="Description"></textarea><br/>
+    <button id="save-item">Save</button>
+  </form>
+
+  <div class="card" id="basic-card">
+    <h3 class="item-name"></h3>
+    <picture>
+      <img class="item-image" src="">
+    </picture>
+    <p class="item-description"></p>
+    <span class="item-price"></span>
+    <span class="item-stock"></span>
+  </div>
+  
+  <section class="item-list"></section>
+
   <script src="../../assets/js/utilities/localstorageUtil.js"></script>
   <script src="../../assets/js/admin/inventoryModule.js"></script>
 </body>
