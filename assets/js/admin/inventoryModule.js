@@ -1,35 +1,70 @@
-let inventoryModule = (function(localStorageUtil) {
+let inventoryModule = ((localStorageUtil, formDataUtil) => {
+
     let _this = {};
     const INVENTORY_LS_KEY = 'inventory';
 
-    let getInventoryArray = function () {
-        return localStorageUtil.get(INVENTORY_LS_KEY) || [];
-    }
+    let getInventoryFromLocalStorage = () => localStorageUtil.get(INVENTORY_LS_KEY) || [];
 
-    _this.saveProduct = function(product) {
-        inventoryArray = getInventoryArray();
+    _this.saveProduct = product => {
+        inventoryArray = getInventoryFromLocalStorage();
         inventoryArray.push(product);
         localStorageUtil.save(INVENTORY_LS_KEY, inventoryArray);
     };
 
-    _this.deleteProduct = function(sku) {
-        inventoryArray = getInventoryArray();
-        newInventoryArray = inventoryArray.filter(function(product) {
-            return product.sku != sku;
-        });
+    _this.deleteProduct = sku => {
+        inventoryArray = getInventoryFromLocalStorage();
+        newInventoryArray = inventoryArray.filter(product => product.sku != sku);
         localStorageUtil.save(INVENTORY_LS_KEY, newInventoryArray);
     };
 
-    _this.loadInventory = function() {
+    _this.loadInventory = () => {
 
         let basicCard = document.querySelector('#basic-card');
         let itemList = document.querySelector('section.item-list');
 
         itemList.innerHTML = '';
 
-        inventoryArray = getInventoryArray();
+        inventoryArray = getInventoryFromLocalStorage();
 
-        inventoryArray.forEach(item => {
+        const deleteProductAction = item => {
+            if (confirm("Confirm item delete?")) {
+                _this.deleteProduct(item.sku);
+                _this.loadInventory();
+            }
+        };
+
+        const editProductAction = (item, index) => {
+            
+            let modal = document.querySelector('div#myModal');
+
+            modal.style.display = 'block';
+
+            modal.querySelector('#item-id').value = index;
+            modal.querySelector('#item-name').value = item.name;
+            modal.querySelector('#item-sku').value = item.sku;
+            modal.querySelector('#item-image-url').value = item.imageUrl;
+            modal.querySelector('#item-description').value = item.description;
+            modal.querySelector('#item-price').value = item.price;
+            modal.querySelector('#item-stock').value = item.stock;
+
+            modal.querySelector('span.close').addEventListener('click', event => {
+                event.preventDefault();
+                modal.style.display = 'none';
+                return;
+            });
+
+            modal.querySelector('button#edit-item').addEventListener('click', event => {
+                event.preventDefault();
+                const form = document.querySelector('form#item-form-edit');
+                const data = formDataUtil.formToObject(form);
+                
+                
+
+                return;
+            });
+        };
+
+        inventoryArray.forEach((item, index) => {
 
             let newCard = basicCard.cloneNode(true);
 
@@ -40,59 +75,50 @@ let inventoryModule = (function(localStorageUtil) {
             newCard.querySelector('p.item-description').textContent = item.description;
             newCard.querySelector('span.item-price').textContent = item.price;
             newCard.querySelector('span.item-stock').textContent = item.stock;
-    
+
+            newCard.querySelector('button.item-delete-button')
+                .addEventListener('click', () => {
+                    deleteProductAction(item);
+                });
+
+            newCard.querySelector('button.item-edit-button')
+                .addEventListener('click',  () => {
+                    editProductAction(item, index);
+                });
+
             itemList.appendChild(newCard);
         });
-    }
+    };
+
+    _this.initSaveItemForm = () => {
+
+        const saveItemButton = document.querySelector('#save-item');
+    
+        saveItemButton.addEventListener('click', event => {
+    
+            event.preventDefault();
+    
+            const form = document.querySelector('form#item-form-create');
+
+            product = formDataUtil.formToObject(form);
+    
+            inventoryModule.saveProduct(product);
+    
+            inventoryModule.loadInventory();
+
+            form.reset();
+        
+            return false;
+        });
+    };
 
     return _this;
-})(localStorageUtil);
 
-document.addEventListener("DOMContentLoaded", function() {
+})(localStorageUtil, formDataUtil);
+
+document.addEventListener("DOMContentLoaded", () => {
 
     inventoryModule.loadInventory();
+    inventoryModule.initSaveItemForm();
 
-    const saveItemButton = document.querySelector('#save-item');
-    
-    saveItemButton.addEventListener('click', function(event) {
-
-        event.preventDefault();
-
-        const form = document.querySelector('#item-form');
-
-        let product = {
-            sku: form.querySelector('#item-sku').value,
-            name: form.querySelector('#item-name').value,
-            description: form.querySelector('#item-description').value,
-            imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE1GoxWMlMhCehDo4ghBebuUOnsCeGtD63xw&usqp=CAU",
-            stock: form.querySelector('#item-stock').value,
-            price: form.querySelector('#item-price').value
-        };
-
-        inventoryModule.saveProduct(product);
-
-        inventoryModule.loadInventory();
-    
-        return false;
-    });
 });
-
-/*
-let product = {
-    sku: "NIN",
-    name: "Nintendo",
-    description: "Consola de juegos nintento.",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/NES-Console-Set.png/1200px-NES-Console-Set.png",
-    stock: 5,
-    price: 500
-}
-
-for (let index = 0; index < 10; index++) {
-
-    product.sku = "NIN" + (index + 1)
-
-    inventoryModule.saveProduct(product);   
-}
-
-//inventoryModule.deleteProduct("NIN001");
-*/

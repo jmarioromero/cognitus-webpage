@@ -11,12 +11,13 @@
 <body>
   <h1>Inventory</h1>
 
-  <form id="item-form">
-    <input type="text" id="item-name" placeholder="Name" /><br/>
-    <input type="text" id="item-sku" placeholder="SKU" /><br/>
-    <input type="text" id="item-price" placeholder="Price" /><br/>
-    <input type="text" id="item-stock" placeholder="Quantity" /><br/>
-    <textarea id="item-description" placeholder="Description"></textarea><br/>
+  <form id="item-form-create">
+    <input type="text" name="name" id="item-name" placeholder="Name" /><br/>
+    <input type="text" name="sku" id="item-sku" placeholder="SKU" /><br/>
+    <input type="text" name="imageUrl" id="item-image-url" placeholder="imageUrl" /><br/>
+    <input type="text" name="price" id="item-price" placeholder="Price" /><br/>
+    <input type="text" name="stock" id="item-stock" placeholder="Quantity" /><br/>
+    <textarea name="description" id="item-description" placeholder="Description"></textarea><br/>
     <button id="save-item">Save</button>
   </form>
 
@@ -28,11 +29,32 @@
     <p class="item-description"></p>
     <span class="item-price"></span>
     <span class="item-stock"></span>
+    <div class="action-buttons">
+      <button class="item-edit-button">Edit</button>
+      <button class="item-delete-button">Delete</button>
+    </div>
   </div>
   
   <section class="item-list"></section>
 
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="item-form-edit">
+        <input type="text" name="name" id="item-name" placeholder="Name" /><br/>
+        <input type="text" name="sku" id="item-sku" placeholder="SKU" /><br/>
+        <input type="text" name="imageUrl" id="item-image-url" placeholder="imageUrl" /><br/>
+        <input type="text" name="price" id="item-price" placeholder="Price" /><br/>
+        <input type="text" name="stock" id="item-stock" placeholder="Quantity" /><br/>
+        <textarea name="description" id="item-description" placeholder="Description"></textarea><br/>
+        <input type="hidden" name="id" id="item-id" /><br/>
+        <button id="edit-item">Save</button>
+      </form>
+    </div>
+  </div>
+
   <script src="../../assets/js/utilities/localstorageUtil.js"></script>
+  <script src="../../assets/js/utilities/formDataUtil.js"></script>
   <script src="../../assets/js/admin/inventoryModule.js"></script>
 </body>
 
