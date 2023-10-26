@@ -1,6 +1,6 @@
 :root {
     --cardWidth: 236px;
-    --cardHeight: 280px;
+    --cardHeight: 360px;
     --cardMargin: 16px;
 }
 
@@ -16,20 +16,20 @@ html, body {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    background: #bbb;
 }
 .card {
     width: var(--cardWidth);
     height: var(--cardHeight);
     margin: var(--cardMargin);
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
 }
 
 .item-list .card picture img {
-    width: 150px;
+    width: 100%;
+    height: 100px;
 }
 
 #basic-card {
@@ -73,3 +73,92 @@ html, body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  .button {
+    cursor: pointer;
+    outline: 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(13, 110, 253);
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.button-basic {
+  cursor: pointer;
+  outline: 0px;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid #333;
+  padding: 6px 12px;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  color: #333;
+}
+
+#item-list-container .buttons {
+  margin-bottom: 1em;
+}
+
+input[type="text"], textarea, select {
+  display: block;
+  margin: 0 0 0.5em 0;
+  padding: 0.5em;
+  width: 50%;
+}
+
+.item-list .card h3 {
+  font-size: 0.8em;
+  height: 2.5em;
+  display: block;
+  overflow: hidden;
+  padding: 0 10px;
+  text-overflow: ellipsis;
+}
+
+.item-list .card p {
+  height: 4.5em;
+  display: block;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+.item-list .card table {
+  width: 100%;
+}
+
+.float-right {
+  float: right;
+}
+
+.danger-button {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+.admin-title {
+  background-color: blue;
+  color: white;
+  margin: 0 0 0.5em 0;
+  padding: 0.5em;
+}
+
+.store input[id="quantity"] {
+  width: 50px;
+  display: block;
+  margin: 0 0 0.5em 0;
+  padding: 0.5em;
+}
