@@ -104,6 +104,7 @@ html, body {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   color: #333;
+  background-color: white;
 }
 
 #item-list-container .buttons {
@@ -156,9 +157,64 @@ input[type="text"], textarea, select {
   padding: 0.5em;
 }
 
-.store input[id="quantity"] {
+.store input.quantity {
   width: 50px;
   display: block;
   margin: 0 0 0.5em 0;
+  padding: 0.5em;
+}
+
+/*Slide lateral*/
+
+.sidenav {
+  color: #333;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #6495ED;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-right: 4px solid #333;
+}
+
+.sidenav .closebtn {
+  color: #333;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+table#items-basket-table {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+table#items-basket-table tfoot tr {
+  border-top: 2px solid #333;
+}
+
+table#items-basket-table tr th, 
+table#items-basket-table tr td {
   padding: 0.5em;
 }
