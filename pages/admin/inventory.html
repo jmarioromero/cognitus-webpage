@@ -5,65 +5,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inventory</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
   <link rel="stylesheet" href="../../assets/css/admin/inventory.css">
 </head>
 
 <body>
-  <h1 class="admin-title">[Admin] Inventory Products</h1>
+  <div class="hidden-body" id="body-container">
+    <h1 class="admin-title">[Admin] Inventory Products</h1>
 
-  <div class="card" id="basic-card">
-    <h3 class="item-name"></h3>
-    <picture>
-      <img class="item-image" src="">
-    </picture>
-    <p class="item-description"></p>
-    <table>
-      <tr>
-        <td colspan="2"><em><b>Status:</b></em>&nbsp;<span class="item-status"></span></td>
-      </tr>
-      <tr>
-        <td><em><b>Price:</b></em>&nbsp;<span class="item-price"></span></td>
-        <td><em><b>Stock:</b></em>&nbsp;<span class="item-stock"></span></td>
-      </tr>
-    </table>
-    <table class="action-buttons">
-      <tr>
-        <td><button class="item-edit-button button-basic">Edit</button></td>
-        <td><button class="item-delete-button button-basic float-right danger-button">Delete</button></td>
-      </tr>
-    </table>
-  </div>
+    <div class="card" id="basic-card">
+      <h3 class="item-name"></h3>
+      <picture>
+        <img class="item-image" src="">
+      </picture>
+      <p class="item-description"></p>
+      <table>
+        <tr>
+          <td colspan="2"><em><b>Status:</b></em>&nbsp;<span class="item-status"></span></td>
+        </tr>
+        <tr>
+          <td><em><b>Price:</b></em>&nbsp;<span class="item-price"></span></td>
+          <td><em><b>Stock:</b></em>&nbsp;<span class="item-stock"></span></td>
+        </tr>
+      </table>
+      <table class="action-buttons">
+        <tr>
+          <td><button class="item-edit-button button-basic">Edit</button></td>
+          <td><button class="item-delete-button button-basic float-right danger-button">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div id="item-list-container">
+      <div class="buttons">
+        <button class="button" id="item-create-button">New Product</button>
+      </div>
+      <section class="item-list"></section>
+    </div>
   
-  <div id="item-list-container">
-    <div class="buttons">
-      <button class="button" id="item-create-button">New Product</button>
-    </div>
-    <section class="item-list"></section>
-  </div>
-
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3 class="title-form">&nbsp;</h3>
-      <form id="item-form">
-        <select name="status" id="item-status">
-          <option value="">-Select status-</option>
-          <option value="1">Active</option>
-          <option value="0">Disable</option>
-        </select>
-        <input type="text" name="name" id="item-name" placeholder="Name" />
-        <input type="text" name="sku" id="item-sku" placeholder="SKU" />
-        <input type="text" name="imageUrl" id="item-image-url" placeholder="imageUrl" />
-        <input type="text" name="price" id="item-price" placeholder="Price" />
-        <input type="text" name="stock" id="item-stock" placeholder="Quantity" />
-        <textarea name="description" id="item-description" placeholder="Description"></textarea>
-        <input type="hidden" name="id" id="item-id" />
-        <button class="button-basic" id="save-item-button">Save</button>
-      </form>
-    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 class="title-form">&nbsp;</h3>
+        <form id="item-form">
+          <select name="status" id="item-status">
+            <option value="">-Select status-</option>
+            <option value="1">Active</option>
+            <option value="0">Disable</option>
+          </select>
+          <input type="text" name="name" id="item-name" placeholder="Name" />
+          <input type="text" name="sku" id="item-sku" placeholder="SKU" />
+          <input type="text" name="imageUrl" id="item-image-url" placeholder="imageUrl" />
+          <input type="text" name="price" id="item-price" placeholder="Price" />
+          <input type="text" name="stock" id="item-stock" placeholder="Quantity" />
+          <textarea name="description" id="item-description" placeholder="Description"></textarea>
+          <input type="hidden" name="id" id="item-id" />
+          <button class="button-basic" id="save-item-button">Save</button>
+        </form>
+      </div>
+    </div>  
   </div>
 
   <script src="../../assets/js/utilities/localstorageUtil.js"></script>
+  <script src="../../assets/js/utilities/validateLoggedUserUtil.js"></script>
   <script src="../../assets/js/utilities/formDataUtil.js"></script>
   <script src="../../assets/js/admin/inventoryModule.js"></script>
 </body>

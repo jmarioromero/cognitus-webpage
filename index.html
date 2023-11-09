@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>E-commerce cognitus</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/admin/inventory.css">
 </head>
 
 <body>
@@ -12,6 +14,46 @@
   <a href="pages/admin/inventory.html">Go to admin inventory</a>
   <br/>
   <a href="pages/public/store.html">Go to public store </a>
+
+  <form id="login-form">
+    <h2>Login</h2>
+    <p>Please fill in this form to login in the system.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <div class="clearfix">
+      <button id="login-button" type="button" class="button button-basic">Sign Up</button>
+    </div>
+  </form>
+
+  <form id="signup-form">
+    <h2>Sign Up</h2>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <div class="clearfix">
+      <button id="signup-button" type="button" class="button button-basic">Sign Up</button>
+    </div>
+  </form>
+
+  <script src="assets/js/utilities/generalUtil.js"></script>
+  <script src="assets/js/utilities/localstorageUtil.js"></script>
+  <script src="assets/js/utilities/formDataUtil.js"></script>
+  <script src="assets/js/indexModule.js"></script>
 </body>
 
 </html>

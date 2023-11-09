@@ -1,0 +1,11 @@
+.hidden-body {
+    display: none;
+}
+
+form#signup-form {
+    width: 300px;
+}
+
+form#signup-form label, form#signup-form input {
+    display: block;
+}

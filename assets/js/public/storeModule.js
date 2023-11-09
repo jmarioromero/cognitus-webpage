@@ -1,4 +1,8 @@
-let storeModule = ((generalUtil, localStorageUtil, formDataUtil) => {
+let storeModule = ((
+    generalUtil, 
+    localStorageUtil, 
+    formDataUtil
+    ) => {
 
     let _this = {};
     const INVENTORY_LS_KEY = 'inventory';
@@ -183,9 +187,15 @@ let storeModule = ((generalUtil, localStorageUtil, formDataUtil) => {
 
     return _this;
 
-})(generalUtil, localStorageUtil, formDataUtil);
+})(
+    generalUtil, 
+    localStorageUtil, 
+    formDataUtil
+);
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    validateLoggedUserUtil.validate('./../../index.html');
 
     storeModule.loadInventory();
     storeModule.loadShoppingCartItems();

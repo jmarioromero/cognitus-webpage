@@ -5,75 +5,79 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Store</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
   <link rel="stylesheet" href="../../assets/css/admin/inventory.css">
 </head>
 
 <body>
-  <h1>Products List</h1>
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Shopping Cart (<span id="shopping-cart-total-items"></span>)</span>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <h3 class="text-center">Items in basket</h3>
-    <table id="items-basket-table">
-      <thead>
-        <tr>
-          <th>SKU</th>
-          <th>Price</th>
-          <th>Qty</th>
-          <th>Total</th>
-          <th>Options</th>
-        </tr>    
-      </thead>
-      <tbody></tbody>
-      <tfoot>
-        <tr>
-          <td class="text-right" colspan="2">Totals:</td>
-          <td>
-            <span id="total-qty-basket">0</span>
-          </td>
-          <td>
-            <span id="total-price-basket"></span>
-          </td>
-          <td>&nbsp;</td>
-        </tr>
-      </tfoot>
-    </table>
-    <div id="">
-      <button class="button-basic float-right" id="button-pay">Pay</button>
+  <div class="hidden-body" id="body-container">
+    <h1>Products List</h1>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Shopping Cart (<span id="shopping-cart-total-items"></span>)</span>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <h3 class="text-center">Items in basket</h3>
+      <table id="items-basket-table">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Options</th>
+          </tr>    
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td class="text-right" colspan="2">Totals:</td>
+            <td>
+              <span id="total-qty-basket">0</span>
+            </td>
+            <td>
+              <span id="total-price-basket"></span>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="">
+        <button class="button-basic float-right" id="button-pay">Pay</button>
+      </div>
     </div>
-  </div>
 
-  <div class="card" id="basic-card">
-    <h3 class="item-name"></h3>
-    <picture>
-      <img class="item-image" src="">
-    </picture>
-    <p class="item-description"></p>
-    <table>
-      <tr>
-        <td><em><b>Price:</b></em>&nbsp;<span class="item-price"></span></td>
-        <td><em><b>Stock:</b></em>&nbsp;<span class="item-stock"></span></td>
-      </tr>
-    </table>
-    <form class="add-to-cart-form">
-      <table class="action-buttons">
+    <div class="card" id="basic-card">
+      <h3 class="item-name"></h3>
+      <picture>
+        <img class="item-image" src="">
+      </picture>
+      <p class="item-description"></p>
+      <table>
         <tr>
-          <td>
-            <input class="item-sku" name="sku" type="hidden" />
-            <input class="quantity" name="quantity" type="number" min="1" max="50" value="1"/>
-          </td>
-          <td><button class="add-to-cart-button button-basic float-right">Add to Cart</button></td>
+          <td><em><b>Price:</b></em>&nbsp;<span class="item-price"></span></td>
+          <td><em><b>Stock:</b></em>&nbsp;<span class="item-stock"></span></td>
         </tr>
       </table>
-    </form>
-  </div>
-  
-  <div id="item-list-container">
-    <section class="item-list store"></section>
+      <form class="add-to-cart-form">
+        <table class="action-buttons">
+          <tr>
+            <td>
+              <input class="item-sku" name="sku" type="hidden" />
+              <input class="quantity" name="quantity" type="number" min="1" max="50" value="1"/>
+            </td>
+            <td><button class="add-to-cart-button button-basic float-right">Add to Cart</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    
+    <div id="item-list-container">
+      <section class="item-list store"></section>
+    </div>
   </div>
 
   <script src="../../assets/js/utilities/generalUtil.js"></script>
   <script src="../../assets/js/utilities/localstorageUtil.js"></script>
+  <script src="../../assets/js/utilities/validateLoggedUserUtil.js"></script>
   <script src="../../assets/js/utilities/formDataUtil.js"></script>
   <script src="../../assets/js/public/storeModule.js"></script>
 </body>
